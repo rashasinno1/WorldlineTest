@@ -9,6 +9,7 @@ namespace WorldlineTest.Services
 {
     class UIService : IUIService
     {
+
         private readonly IActionService mActionService;
         public UIService(IActionService actionService)
         {
@@ -16,12 +17,18 @@ namespace WorldlineTest.Services
         }
         public string input()
         {
-            return null;
+            Console.WriteLine("Enter your command:");
+            string input = Console.ReadLine();
+            return mActionService.report(input);
+
         }
 
         public string output(string message)
         {
-            return null;
+            Console.WriteLine(message);
+            Console.WriteLine("Exit  program (Y/N)?");
+
+            return Console.ReadLine();
 
         }
     }

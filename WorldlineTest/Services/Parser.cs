@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WorldlineTest.Interfaces;
+using WorldlineTest.Models;
 
 namespace WorldlineTest.Services
 {
-    public class Parser
+    public static class Parser
     {
-        public static  List<IOperation> parseInput(string input)
+        public static  List<Operation> ParseInput(string input)
         {
-            string[] operations = input.Split("\\n");
-            foreach (string op in operations)
+            var operations = new List<Operation>();
+            string[] strOperations = input.Split("\\n");
+            foreach (string op in strOperations)
             {
                 //Verify REGEX op start with P,R,F or L and then has a decimal                 
                 decimal value = 0;
@@ -20,22 +22,22 @@ namespace WorldlineTest.Services
 
                 if (op.ToUpper().StartsWith("P"))
                 {
-                    AdjustBalance(value);
+                    operations.Add(new Payment(value));
                 }
                 else if (op.ToUpper().StartsWith("R"))
                 {
-                    AdjustBalance(-value);
+                    operations.Add(new Refund(value));
                 }
                 else if (op.ToUpper().StartsWith("F"))
                 {
-                    AdjustBalance(-value);
-                    AddFee(value);
+                    operations.Add(new TransactionFee(value));
                 }
                 else if (op.ToUpper().StartsWith("L"))
                 {
-                    ResetBalance();
+                    operations.Add(new Payout(value));
                 }
             }
+            return operations;
         }
     }
 }

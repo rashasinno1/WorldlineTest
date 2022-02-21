@@ -6,7 +6,7 @@ namespace WorldlineTest
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var container = Startup.ConfigureService();
         }
     }
 }

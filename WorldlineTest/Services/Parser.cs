@@ -34,7 +34,7 @@ namespace WorldlineTest.Services
                 }
                 else if (op.ToUpper().StartsWith("L"))
                 {
-                    operations.Add(new Payout(value));
+                    operations.Add(new Payout());
                 }
             }
             return operations;

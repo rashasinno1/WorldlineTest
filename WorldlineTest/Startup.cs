@@ -16,7 +16,7 @@ namespace WorldlineTest
             var provider = new ServiceCollection()
                     .AddTransient<IUIService, UIService>()
                     .AddTransient<IActionService, ActionService>()
-                    .AddTransient<Account>()
+                    .AddTransient<Account>()//new account at each iteration? to be changed upon specs
                     .BuildServiceProvider();
             return provider;
 

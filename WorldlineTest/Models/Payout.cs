@@ -9,13 +9,14 @@ namespace WorldlineTest.Models
 {
     public class Payout : Operation
     {
-        public Payout(decimal amount) : base("Payout", amount)
+        public Payout() : base("Payout", 0)
         {
 
         }
-        public override string Apply(Account account)
+        public override void Apply(Account account)
         {
-            throw new NotImplementedException();
+            account.transfers += account.balance;
+            account.balance = 0;
         }
     }
 }

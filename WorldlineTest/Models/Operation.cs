@@ -9,9 +9,9 @@ namespace WorldlineTest.Models
 {
     public abstract class Operation
     {
-        private readonly string _type;
-        private readonly decimal _amount;
-        public abstract string Apply(Account account);
+        protected  string _type;
+        protected  decimal _amount;
+        public abstract void Apply(Account account);
         public Operation(string type , decimal amount)
         {
             _type = type;

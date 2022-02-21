@@ -13,9 +13,10 @@ namespace WorldlineTest.Models
         {
 
         }
-        public override string Apply(Account account)
+        public override void Apply(Account account)
         {
-            throw new NotImplementedException();
+            account.balance -= _amount;// can balance be negative?
+            account.fees += _amount;
         }
     }
 }

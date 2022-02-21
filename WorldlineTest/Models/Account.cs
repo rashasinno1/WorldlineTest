@@ -9,9 +9,9 @@ namespace WorldlineTest.Models
 {
     public class Account
     {
-        public readonly decimal balance;
-        public readonly decimal fees;
-        public readonly decimal transfers;
+        public  decimal balance;
+        public  decimal fees;
+        public  decimal transfers;
         public readonly List<Operation> operationsPerformed;
         public void PerformOperation(Operation operation)
         {

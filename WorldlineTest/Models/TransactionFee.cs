@@ -7,9 +7,13 @@ using WorldlineTest.Interfaces;
 
 namespace WorldlineTest.Models
 {
-    public class TransactionFee : IOperation
+    public class TransactionFee : Operation
     {
-        public string Apply(Account account)
+        public TransactionFee(decimal amount) : base("TransactionFee", amount)
+        {
+
+        }
+        public override string Apply(Account account)
         {
             throw new NotImplementedException();
         }

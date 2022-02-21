@@ -7,11 +7,19 @@ using WorldlineTest.Interfaces;
 
 namespace WorldlineTest.Models
 {
-    public class Payment : IOperation
+    public class Payment : Operation
     {
-        public string Apply(Account account)
+
+        public Payment( decimal amount): base("Payment",amount)
+        {
+            
+        }
+        public override string Apply(Account account)
         {
             throw new NotImplementedException();
         }
+
+      
+
     }
 }

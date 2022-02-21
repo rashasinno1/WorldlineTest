@@ -3,18 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WorldlineTest.Interfaces;
 
 namespace WorldlineTest.Models
 {
     public class Account
     {
-        public decimal balance { get; private set; }
-        public decimal fees { get; private set; }
-        public decimal transfers { get; private set; }
-        public void performOperation(IOperation operation)
+        public readonly decimal balance;
+        public readonly decimal fees;
+        public readonly decimal transfers;
+        public readonly List<Operation> operationsPerformed;
+        public void PerformOperation(Operation operation)
         {
             operation.Apply(this);
-            
+            operationsPerformed.Add(operation);
+        }
+    
+        public override string ToString()
+        {
+            string logAuditor="";
+            foreach(Operation op in operationsPerformed)
+            {
+                logAuditor += op.ToString() + Environment.NewLine;
+            }
+            return String.Concat("Balance: ", balance, Environment.NewLine,
+                "Total fees: ", fees, Environment.NewLine,
+                "Transferred to recipient: ", transfers, Environment.NewLine,
+                logAuditor);
         }
         //public void ReceivePayment(decimal amount)
         //{
@@ -34,12 +49,5 @@ namespace WorldlineTest.Models
         //    transfers += balance;
         //    balance -= balance;          
         //}
-        public override string ToString()
-        {
-            return String.Concat("Balance: ", balance, Environment.NewLine,
-                "Total fees: ", fees, Environment.NewLine,
-                "Transferred to recipient: ", transfers);
-        }
-
     }
 }

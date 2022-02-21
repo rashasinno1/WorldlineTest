@@ -7,9 +7,13 @@ using WorldlineTest.Interfaces;
 
 namespace WorldlineTest.Models
 {
-    public class Refund : IOperation
+    public class Refund : Operation
     {
-        public string Apply(Account account)
+        public Refund(decimal amount) : base("Refund", amount)
+        {
+
+        }
+        public override string Apply(Account account)
         {
             throw new NotImplementedException();
         }

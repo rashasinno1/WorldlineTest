@@ -19,7 +19,7 @@ namespace WorldlineTest.Services
         {
             Console.WriteLine("Enter your command:");
             string input = Console.ReadLine();
-            return mActionService.report(input);
+            return mActionService.Report(input);
 
         }
 

@@ -18,18 +18,23 @@ namespace WorldlineTest.Models
             operation.Apply(this);
             operationsPerformed.Add(operation);
         }
-    
-        public override string ToString()
+
+        public string LogOperations()
         {
-            string logAuditor="";
-            foreach(Operation op in operationsPerformed)
+            string logAuditor = "";
+            foreach (Operation op in operationsPerformed)
             {
                 logAuditor += op.ToString() + Environment.NewLine;
             }
+
+            return logAuditor;
+        }
+    
+        public override string ToString()
+        {
             return String.Concat("Balance: ", balance, Environment.NewLine,
                 "Total fees: ", fees, Environment.NewLine,
-                "Transferred to recipient: ", transfers, Environment.NewLine,
-                logAuditor);
+                "Transferred to recipient: ", transfers, Environment.NewLine);
         }
         //public void ReceivePayment(decimal amount)
         //{

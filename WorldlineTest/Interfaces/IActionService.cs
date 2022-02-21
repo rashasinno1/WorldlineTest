@@ -8,7 +8,7 @@ namespace WorldlineTest.Interfaces
 {
     interface IActionService
     {
-        string report(string input);
+        string Report(string input);
             
     }
 }

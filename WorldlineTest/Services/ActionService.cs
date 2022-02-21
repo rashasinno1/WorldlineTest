@@ -20,6 +20,7 @@ namespace WorldlineTest.Services
             string[] operations = input.Split("\\n");
             foreach (string op in operations)
             {
+                //Verify REGEX op start with P,R,F or L and then has a decimal                 
                 decimal value = 0;
                 if (op.Length > 1) value = Decimal.Parse(op.Substring(1));
 
